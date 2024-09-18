@@ -1,4 +1,4 @@
-package com.exapmle.school.repository;
+package com.example.school.repository;
 
 import com.example.school.model.Student;
 import java.util.*;
@@ -10,7 +10,7 @@ public interface StudentRepository {
 
     Student addStudent(Student student);
 
-    String addMultipleStudents(ArrayList<Student> studentList);
+    String addMultipleStudents(ArrayList<Student> studentsList);
 
     Student updatedStudent(int studentId, Student student);
 

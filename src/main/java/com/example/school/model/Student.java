@@ -26,7 +26,9 @@ public class Student {
         this.studentName = studentName;
     }
 
-    public void String getStudentName(){
+    public void String
+
+    getStudentName(){
     return studentName;
     }
 

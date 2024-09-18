@@ -12,14 +12,14 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.*;
 
 @Service
-public class StudentH2Service implements studentsRepository {
+public class StudentH2Service implements studentRepository {
 
     @Autowired
     private jdbcTemplate db;
 
     @Override
     public ArrayList<Student> getStudents() {
-        List<Student> studentData = db.query("select * from student", new StudentRowMappeer());
+        List<Student> studentData = db.query("select * from student", new StudentRowMappper());
         ArrayList<Student> students = new ArrayList<>(studentData);
         return students;
     }
@@ -37,18 +37,18 @@ public class StudentH2Service implements studentsRepository {
 
 @Override
 public Student addStudent(Student student){
-db.update("insert into student(studentName, Gender, Standard) vakues (?,?,?)" student.getStudentName(),
+db.update("insert into student(studentName, Gender, Standard) values (?,?,?)" student.getStudentName(),
 student.getGender(), student.getStandard());
-Student saveStudent = db.queryForObject("select * from where studentName =? and gender = ? and standard = ?" new StudentRowMapper(),
+Student savedStudent = db.queryForObject("select * from where studentName =? and gender = ? and standard = ?" new StudentRowMapper(),
 student.getStudentName(), student.getGender(), student.getStandard());
-return saveStudent;
+return savedStudent;
 }
 
     @Override
     public String addMultipleStudents(ArrayList<Student> studentsList) {
         for (Student eachStudent : studentsList) {
             db.update("insert into student(studentName, gender, standard) values (?,?,?)", eachStudent.getStudentName(),
-                    eachStudent.Gender(), eachStudent.getStandard());
+                    eachStudent.getGender(), eachStudent.getStandard());
         }
         String responseMessage = String.format("Succesfully added %d students", studentsList.size());
         return responseMessage;

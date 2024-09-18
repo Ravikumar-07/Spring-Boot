@@ -2,9 +2,9 @@ package com.example.school.model;
 
 import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
-import java.sql.SQLExeception;
+import java.sql.SQLException;
 
-import com.example.school.model.student;
+import com.example.school.model.Student;
 
 public class StudentRowMapper implements RowMapper<Student> {
     public Student mapRow(ResultSet rs, int rowNum) throws SQLExeception {
