@@ -32,7 +32,7 @@ return studentService.addMultipleStudents(studentsList);
 }
 
     @PutMapping("/students/{studentId}")
-    public Student updateStudent(@PathVariable("studentId") int studentId, @RequestBody Student students) {
+    public Student updateStudent(@PathVariable("studentId") int studentId, @RequestBody Student student) {
         return studentService.updatedStudent(studentId, student);
     }
 

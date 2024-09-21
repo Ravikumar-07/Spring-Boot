@@ -37,9 +37,10 @@ public class StudentH2Service implements studentRepository {
 
 @Override
 public Student addStudent(Student student){
-db.update("insert into student(studentName, Gender, Standard) values (?,?,?)" student.getStudentName(),
+db.update("insert into student(studentName, Gender, Standard) values (?,?,?)", student.getStudentName(),
 student.getGender(), student.getStandard());
-Student savedStudent = db.queryForObject("select * from where studentName =? and gender = ? and standard = ?" new StudentRowMapper(),
+
+Student savedStudent = db.queryForObject("select * from student where studentName =? and gender = ? and standard = ?" new StudentRowMapper(),
 student.getStudentName(), student.getGender(), student.getStandard());
 return savedStudent;
 }
@@ -52,21 +53,6 @@ return savedStudent;
         }
         String responseMessage = String.format("Succesfully added %d students", studentsList.size());
         return responseMessage;
-    }
-
-    @Override
-    public void deleteStudent(int studentId) {
-        db.update("delete from student where studentId = ?", studentId);
-    }
-
-    @Override
-    public String addMultipleStudents(ArrayList<Studnet> studentsList) {
-        for (Student eachStudent : studentsList) {
-            db.update("insert into student(studentName, gender, standard) values (?,?,?)", eachStudent.getStudentName(),
-                    eachStudent.getGender(), ecahStudent.getStandard());
-        }
-        String reponseMessage = String.format("Succefully added %d students", studentList.size());
-        return reponseMessage;
     }
 
     @Override
